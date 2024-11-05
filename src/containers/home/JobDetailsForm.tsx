@@ -37,19 +37,16 @@ const JobDetailsForm: React.FC<{
       },
     });
 
-  // to update context state
-  const updateContextState = (name: string, value: string | number) => {
-    setState((prevState) => ({
-      ...prevState,
-      jobDetails: values,
-    }));
-  };
-
-  // change handler for inputs
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     handleChange(e);
-    updateContextState(name, value);
+    setState((prevState) => ({
+      ...prevState,
+      jobDetails: {
+        ...prevState.jobDetails,
+        [name]: value,
+      },
+    }));
   };
 
   return (
