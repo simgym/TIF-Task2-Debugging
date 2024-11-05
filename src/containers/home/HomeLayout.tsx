@@ -29,14 +29,14 @@ const CustomTab: React.FC<TabProps> = ({ children, ...props }) => {
 const HomeLayout = () => {
   const dataContext = useData();
 
+  const [page, setPage] = useState<PageNumbers>(0);
+
   if (!dataContext) {
     return null;
   }
 
   const { state } = dataContext;
-
   const { requisitionDetails, jobDetails, interviewSettings } = state;
-  const [page, setPage] = useState<PageNumbers>(0);
 
   const handlePage = (pageNumber: PageNumbers) => {
     setPage(pageNumber);
